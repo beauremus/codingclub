@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>reveal.js</title>
+	<title>Command Line and Python</title>
 
 	<link rel="stylesheet" href="css/reveal.css">
 	<link rel="stylesheet" href="css/theme/black.css">
@@ -28,6 +28,88 @@
 		<div class="slides">
 			<section>
 				<img src="images/Title.svg" style="border: none; background: none; box-shadow: none;" />
+			</section>
+			<section>
+				<section>
+					<h2>Command Line</h2>
+					<small>terminal, console, cli, shell</small>
+				</section>
+				<section>
+					<ul>
+						<li>console - historically, the physical interface to a machine</li>
+						<li>terminal - a particular interface to a machine eg. keyboard</li>
+						<li>cli - command line interface - where you type commands</li>
+						<li>shell - starts other programs can be GUI or CLI</li>
+					</ul>
+					<aside class="notes">
+						TERMINAL - A terminal implements certain features. The keyboard doesn't implement the same features as the monitor. SHELL
+						- encompasses other programs. We will be using terminal emulators. For our purposes all of these terms are the same.
+					</aside>
+				</section>
+			</section>
+			<section>
+				<section>
+					<img src="images/Bash.svg" alt="Bourne-Again Shell" style="border: none; background: none; box-shadow: none;" />
+					<aside class="notes">
+						Many things will be the same or similar in different shells but we will be working in Bash. Originally bsh, Bourne Shell
+						is now Bourne-Again Shell, Bash.
+					</aside>
+				</section>
+				<section>
+					<h2>File Structure Navigation</h2>
+					<ul>
+						<li>pwd - print working directory</li>
+						<li>ls - list</li>
+						<li>cd - change directory</li>
+						<li>. - current directory</li>
+						<li>.. - parent directory</li>
+						<li>~ - home directory</li>
+					</ul>
+					<aside class="notes">
+						ls likely comes from Multics OS where drive access was segmented in memory, thus list segments. It is commonly assumed that
+						now this just stands for list.
+					</aside>
+				</section>
+				<section>
+					<h2>File Manipulation</h2>
+					<ul>
+						<li>cp - copy</li>
+						<li>mv - move</li>
+						<li>rm - remove</li>
+						<li>mkdir - make directory</li>
+					</ul>
+					<aside class="notes">
+						These commands are pretty straight forward but useful. Be careful with rm. rm is permanent and /, ~, and * can delete your
+						entire system. mkdir -p is the most useful argument as it lets you create multiple directories.
+					</aside>
+				</section>
+				<section>
+					<h2>Useful Tools</h2>
+					<ul>
+						<li>--help</li>
+						<li>man - manual page</li>
+						<li>cat - concatenate</li>
+						<li>less - less is more</li>
+						<li>head/tail</li>
+						<li>&lt;&gt; - redirection</li>
+						<li>!! - last command</li>
+						<li>tab complete</li>
+						<li>up for most recent command</li>
+					</ul>
+					<aside class="notes">
+						Both --help and man depend on implementing the feature. cat is cat abuse but who cares? head and tail give you a part of
+						the file. &lt; &gt; redirects the file or output in the given direction.
+					</aside>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Installing Python</h2>
+					<small>
+						<a href="https://realpython.com/installing-python/">https://realpython.com/installing-python/</a>
+						<p>You may already have it installed.</p>
+					</small>
+				</section>
 			</section>
 		</div>
 	</div>
