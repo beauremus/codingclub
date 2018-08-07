@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>reveal.js</title>
+	<title>Gitflow Workflow</title>
 
 	<link rel="stylesheet" href="css/reveal.css">
 	<link rel="stylesheet" href="css/theme/black.css">
@@ -29,60 +29,120 @@
 			<section>
 				<img src="images/Title.svg" style="border: none; background: none; box-shadow: none;" />
 			</section>
-		</div>
-	</div>
-
-	<script src="lib/js/head.min.js"></script>
-	<script src="js/reveal.js"></script>
-
-	<script>
-		// More info about config & dependencies:
-		// - https://github.com/hakimel/reveal.js#configuration
-		// - https://github.com/hakimel/reveal.js#dependencies
-		Reveal.initialize({
-			dependencies: [
-				{ src: 'plugin/markdown/marked.js' },
-				{ src: 'plugin/markdown/markdown.js' },
-				{ src: 'plugin/notes/notes.js', async: true },
-				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
-			]
-		});
-	</script>
-</body>
-
-</html>
-<!doctype html>
-<html>
-
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-	<title>reveal.js</title>
-
-	<link rel="stylesheet" href="css/reveal.css">
-	<link rel="stylesheet" href="css/theme/league.css">
-
-	<!-- Theme used for syntax highlighting of code -->
-	<link rel="stylesheet" href="lib/css/zenburn.css">
-
-	<!-- Printing and PDF exports -->
-	<script>
-		var link = document.createElement('link');
-		link.rel = 'stylesheet';
-		link.type = 'text/css';
-		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
-		document.getElementsByTagName('head')[0].appendChild(link);
-	</script>
-</head>
-
-<body>
-	<div class="reveal">
-		<div class="slides">
 			<section>
-				<img src="images/Title.svg" style="border: none; background: none; box-shadow: none;" />
+				<h2>Gitflow Workflow</h2>
+				<h3>
+					<small>By Vincent Driessen</small>
+				</h3>
 			</section>
-			<section>Slide 2</section>
+			<section>
+				<h3>It's just git</h3>
+				<h4>
+					<small>but there is a
+						<a href="https://github.com/nvie/gitflow">command line utility</a>
+					</small>
+				</h4>
+				<aside class="notes">
+					Caveat, I almost always work alone. I may not be aware of common issue using this strategy in a group. Also, this isn't a
+					solution for every occasion. I often use a single branch.
+				</aside>
+			</section>
+			<section>
+				<h4>Why?</h4>
+				<ul>
+					<li>Prevents orphaned files and branches</li>
+					<li>Allows for easy, confident work on</li>
+					<ul>
+						<li>multiple features</li>
+						<li>hot fixes</li>
+						<li>deployment to the real world</li>
+					</ul>
+					<li>It can be reasoned about</li>
+				</ul>
+				<aside class="notes">
+					Even when using versioning it can be easy to get lost. I often mindlessly make commits without thinking about the larger
+					structure. You want to think about structure at breaking points. Working on multiple features at a time can lead to
+					having orphaned files and unnecessary code comments to keep track of what you are doing.
+				</aside>
+			</section>
+			<section>
+				<section>
+					<h2>Development Branch</h2>
+					<p>
+						<small>Development branch is a comprehensive history of the project.</small>
+					</p>
+					<aside class="notes">
+						First thing we need to do is complement our master branch with a development branch. The names of the branches can be whatever
+						makes most sense to you but this is the community convention.
+					</aside>
+				</section>
+				<section>
+					<img src="images/develop.svg" style="border: none; background: none; box-shadow: none;" />
+				</section>
+				<section>
+					<h2>Master Branch</h2>
+					<p>
+						<small>The Master branch will hold all the public releases of the project.</small>
+					</p>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Feature Branches</h2>
+					<p>
+						<small>Feature branches start and end on the Development branch.</small>
+					</p>
+					<aside class="notes">
+						Each new feature should reside in its own branch, which can be pushed to the central repository for backup/collaboration.
+						But, instead of branching off of master, feature branches use develop as their parent branch. When a feature is complete,
+						it gets merged back into develop. Features should never interact directly with master.
+					</aside>
+				</section>
+				<section>
+					<img src="images/feature.svg" style="border: none; background: none; box-shadow: none;" />
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Hotfix Branches</h2>
+					<p>
+						<small>
+							Hotfixes are branched from master to be fixed and then merged back into Master and Development branches.
+						</small>
+					</p>
+					<aside class="notes">Maintenance or “hotfix” branches are used to quickly patch production releases. Hotfix branches are a lot like release
+						branches and feature branches except they're based on master instead of develop. This is the only branch that should
+						fork directly off of master. As soon as the fix is complete, it should be merged into both master and develop.</aside>
+				</section>
+				<section>
+					<img src="images/hotfix.svg" style="border: none; background: none; box-shadow: none;" />
+				</section>
+			</section>
+			<section>
+				<h3>The overall flow of Gitflow is:</h3>
+				<small>
+					<ul>
+						<li>A develop branch is created from master</li>
+						<li>A release branch is created from develop</li>
+						<li>Feature branches are created from develop</li>
+						<li>When a feature is complete it is merged into the develop branch</li>
+						<li>When the release branch is done it is merged into develop and master</li>
+						<li>If an issue in master is detected a hotfix branch is created from master</li>
+						<li>Once the hotfix is complete it is merged to both develop and master</li>
+					</ul>
+				</small>
+			</section>
+			<section>
+				<h2>Resources</h2>
+				<ul>
+					<li>
+						<a href="https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow">More detail on this workflow</a>
+					</li>
+					<li>
+						<a href="https://www.atlassian.com/git/tutorials/comparing-workflows">A comparision of common workflows</a>
+					</li>
+				</ul>
+			</section>
 		</div>
 	</div>
 
