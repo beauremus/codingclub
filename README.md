@@ -11,6 +11,7 @@ The [presentations](presentations) folder stores the presentations from the each
 - [git flow](/presentations/gitFlow/git-flow.pdf) /w [notes](/presentations/gitFlow/git-flow_notes.pdf)
 - [Web development](/presentations/webDevelopment/webDevelopment.pdf)
 - [Rust](/presentations/rust/rust.pdf)
+- [Rust](/presentations/immutability/immutability.pdf)
 
 ## Examples
 
