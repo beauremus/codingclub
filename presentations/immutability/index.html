@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <link
+      runat="server"
+      rel="shortcut icon"
+      href="favicon.ico"
+      type="image/x-icon"
+    />
+    <link runat="server" rel="icon" href="favicon.ico" type="image/ico" />
+
+    <title>Immutability</title>
+
+    <meta
+      name="description"
+      content="A discussion on immutability and its features"
+    />
+    <meta name="author" content="Beau Harrison" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/black.css" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css" />
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? "css/print/pdf.css"
+        : "css/print/paper.css";
+      document.getElementsByTagName("head")[0].appendChild(link);
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>Immutability</h1>
+          <p><small>Beau Harrison</small></p>
+        </section>
+        <section>
+          <h2>Wikipedia</h2>
+          <small>
+            <blockquote cite="https://www.wikiwand.com/en/Immutable_object">
+              In object-oriented and functional programming, an immutable object
+              (unchangeable object) is an object whose state cannot be modified
+              after it is created. This is in contrast to a mutable object
+              (changeable object), which can be modified after it is created. In
+              some cases, an object is considered immutable even if some
+              internally used attributes change, but the object's state appears
+              unchanging from an external point of view.
+            </blockquote>
+            <blockquote cite="https://www.wikiwand.com/en/Immutable_object">
+              Strings and other concrete objects are typically expressed as
+              immutable objects to improve readability and runtime efficiency in
+              object-oriented programming. Immutable objects are also useful
+              because they are inherently thread-safe. Other benefits are that
+              they are simpler to understand and reason about and offer higher
+              security than mutable objects.
+            </blockquote>
+          </small>
+        </section>
+        <section><h2>Examples</h2></section>
+        <section>
+          <section>
+            <h2>Rust</h2>
+            <p cite="https://github.com/beauremus/codingclub/blob/master/presentations/rust/rust.pdf">memory safety and concurrency<br/>no null pointers or shared mutable state</p>
+            <aside class="notes">
+                Last week's discussion of Rust inspired me to talk more about Immutability.
+                <ul>
+                  <li>Immutability is a core concept in Rust that is key to its safety goals</li>
+                  <li>Immutability is not unique to Rust</li>
+                </ul>
+              </aside>
+          </section>
+          <section>
+            <h2>Rust</h2>
+            <pre><code data-trim data-noescape>
+let x = 5; // immutable by default
+x = 10; // compile time error
+let mut y = 6; // we can now change y
+y = 2;
+
+let y: i32 = 16;
+let y = y + 1; // shadowing, transforms y with immutability
+
+let mut scores = HashMap::new();
+scores.insert(String::from("Blue"), 10); // adding items
+            </code></pre>
+            <aside class="notes">
+                Here's an example from last week.
+                <ul>
+                  <li>We can see that x is not reassignable</li>
+                  <li>There is a mutable key word that explicity allows for reassigning</li>
+                  <li>The concept of shadowing allows the syntax to look like reassigning because the old variable will not bre reused.</li>
+                </ul>
+              </aside>
+          </section>
+          <section>
+            <h2>Rust</h2>
+            <h3>Borrowing</h3>
+            <pre><code data-trim data-noescape>
+let v = vec![1,2,3];
+
+fn foo(v: &Vec<i32>) {
+  v.push(4); // compile time error
+}
+
+foo(&v); // the ref is immutable by default
+              </code></pre>
+              <aside class="notes">
+                Here we can see that this vector is no changeable when we try to push a new value into it.
+              </aside>
+          </section>
+          <section>
+            <h2>Rust</h2>
+            <h3>Borrowing</h3>
+            <pre><code data-trim data-noescape>
+let mut v = vec![1,2,3]; // the vector should be mutable
+
+fn foo(v: &mut Vec<i32>) {
+  v.push(4);
+}
+
+foo(&mut v); // as well as the ref
+              </code></pre>
+              <p>The Rust compiler only allows one borrower at a time, it can only be changed in one place at a time. Immutability by default makes this possible.</p>
+          </section>
+          <section>
+              <h2>Rust</h2>
+              <h3>Concurrency</h3>
+              <p>Once again, immutability by default gives peace of mind that when multiple processes are using the same variable, it will not change.</p>
+            </section>
+        </section>
+        <section>
+          <section>
+            <h2>Python</h2>
+            <p cite="http://net-informations.com/python/iq/immutable.htm">Everything in Python is an object. An object’s mutability is determined by its type. Some objects like lists and dictionaries are mutable, meaning you can change their content without changing their identity. Other objects like integers, floats, strings and tuples are objects that can not be changed.</p>
+          </section>
+          <section>
+            <h2>Python</h2>
+            <pre><code data-trim data-noescape class="hljs python">
+>>> temp = "hello world"
+>>> temp[0] = "b"
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'str' object does not support item assignment
+            </code></pre>
+          </section>
+          <section>
+            <h2>Python</h2>
+            <pre><code data-trim data-noescape class="hljs python">
+>>> temp = (10, 20, 30)
+>>> temp[0] = 40
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'tuple' object does not support item assignment
+            </code></pre>
+          </section>
+        </section>
+        <section>
+          <h2>Why does it matter?</h2>
+          <ul>
+            <li>Memory usage</li>
+            <li>Performance</li>
+            <li>Peace of mind</li>
+            <li>Readability</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        dependencies: [
+          { src: "plugin/markdown/marked.js" },
+          { src: "plugin/markdown/markdown.js" },
+          { src: "plugin/notes/notes.js", async: true },
+          {
+            src: "plugin/highlight/highlight.js",
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          }
+        ]
+      });
+    </script>
+  </body>
+</html>
