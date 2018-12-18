@@ -12,6 +12,7 @@ The [presentations](presentations) folder stores the presentations from the each
 - [Web development](/presentations/webDevelopment/webDevelopment.pdf)
 - [Rust](/presentations/rust/rust.pdf)
 - [Immutability](/presentations/immutability/immutability.pdf)
+- [Neural Networks](/presentations/neuralNetworks/NeuralNetworks.pdf)
 
 ## Examples
 
