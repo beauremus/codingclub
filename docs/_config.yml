@@ -1,3 +1,5 @@
+baseurl: ""
+url: "https://fermicoding.club"
 theme: jekyll-theme-minimal
 title: "Fermilab Coding Club"
 description: "A repository of Coding Club events and code"
