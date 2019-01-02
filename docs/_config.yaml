@@ -1,1 +1,13 @@
 theme: jekyll-theme-minimal
+title: "Fermilab Coding Club"
+description: "A repository of Coding Club events and code"
+# logo: [Location of the logo]
+# show_downloads: "true"
+
+# permalink: /updates/:year/:month/:day/:title
+
+plugins:
+  - jekyll-paginate
+
+paginate: 5
+paginate_path: "/updates/page:num/"
