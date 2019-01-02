@@ -19,3 +19,4 @@ The [presentations](presentations) folder stores the presentations from the each
 The [examples](examples) folder stores code used in the meetings.
 
 - [Teacher Salaries](/examples/Python/TeacherSalaries/)
+- [CSS Snow](/examples/JavaScript/snow/)
