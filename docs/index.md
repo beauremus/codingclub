@@ -5,4 +5,4 @@ title: Welcome to Fermilab Coding Club
 
 # Fermilab Coding Club
 
-![Flyer]({{site.url}}/images/flyer.pdf)
+![Flyer](/assets/images/flyer.svg){:style="width:88vw"}
