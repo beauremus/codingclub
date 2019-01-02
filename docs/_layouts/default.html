@@ -15,23 +15,40 @@
     <!-- <link rel="stylesheet" type="text/css" href="/css/main.css" /> -->
   </head>
   <body>
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/cv">CV</a></li>
-        <li><a href="/blog">Blog</a></li>
-      </ul>
-    </nav>
-    <div class="container">{{ content }}</div>
-    <!-- /.container -->
-    <footer>
-      <ul>
-        <li><a href="mailto:hankquinlanhub@gmail.com">email</a></li>
+    <header>
+      <h1>{{ page.title }}</h1>
+      <img src="/assets/images/logo.svg" alt="Logo" />
+      <p>A club for sharing coding knowledge.</p>
+      <p class="view">
+        <a href="https://github.com/beauremus/codingclub"
+          >View the Project on GitHub <small>beauremus/codingclub</small></a
+        >
+      </p>
+      <ul class="downloads">
         <li>
-          <a href="https://github.com/hankquinlan">github.com/hankquinlan</a>
+          <a href="https://github.com/beauremus/codingclub/zipball/master"
+            >Download <strong>ZIP File</strong></a
+          >
+        </li>
+        <li>
+          <a href="https://github.com/beauremus/codingclub/tarball/master"
+            >Download <strong>TAR Ball</strong></a
+          >
+        </li>
+        <li>
+          <a href="https://github.com/beauremus/codingclub"
+            >View On <strong>GitHub</strong></a
+          >
         </li>
       </ul>
+    </header>
+    <div class="container">{{ content }}</div>
+    <footer>
+      <p>
+        This project is maintained by
+        <a href="https://github.com/beauremus">beauremus</a>
+      </p>
+      <p><a href="mailto:beau@fnal.gov">Email</a></p>
     </footer>
   </body>
 </html>
