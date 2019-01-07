@@ -1,11 +1,14 @@
 baseurl: "/"
 url: "https://fermicoding.club"
-theme: jekyll-theme-minimal
 title: "Fermilab Coding Club"
 description: "A repository of Coding Club events and code"
 
 plugins:
   - jekyll-paginate
+  - jekyll-include-cache
+
+theme: jekyll-theme-minimal
+remote-theme: jekyll-theme-minimal
 
 paginate: 5
 paginate_path: "/updates/page:num/"
