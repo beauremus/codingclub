@@ -12,8 +12,8 @@
   "dependencies": {
     "express": "~4.13.3",
     "grunt-cli": "~0.1.13",
-    "mustache": "~2.2.1",
-    "socket.io": "~1.7.4"
+    "socket.io": "~1.7.4",
+    "mustache": "~2.3.2",
   },
   "license": "MIT"
 }
