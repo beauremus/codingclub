@@ -12,7 +12,7 @@
     "node": "~4.1.1"
   },
   "dependencies": {
-    "express": "~4.17.1",
+    "express": "~4.18.1",
     "grunt-cli": "~1.4.2",
     "socket.io": "~3.1.2",
     "snyk": "^1.299.0",
